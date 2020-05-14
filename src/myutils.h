@@ -66,7 +66,11 @@ typedef __int64 int64;
 typedef unsigned __int64 uint64;
 #elif defined(__GNUC__)
 typedef long int64;
+#if		defined(__MINGW32__)
+typedef unsigned long long uint64;
+#else
 typedef unsigned long uint64;
+#endif
 #else	
 #error	"int64 typedefs"
 #endif

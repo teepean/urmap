@@ -20,7 +20,7 @@
 #include <algorithm>
 #include <stdlib.h>
 
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 #define WIN32_LEAN_AND_MEAN
 #include <crtdbg.h>
 #include <process.h>
@@ -981,7 +981,7 @@ void Warning_(const char *Format, ...)
 		}
 	}
 
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 void mysleep(unsigned ms)
 	{
 	Sleep(ms);
@@ -993,7 +993,7 @@ void mysleep(unsigned ms)
 	}
 #endif
 
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 double GetMemUseBytes()
 	{
 	HANDLE hProc = GetCurrentProcess();
@@ -2128,7 +2128,7 @@ void ResetRand(unsigned Seed)
 
 unsigned GetCPUCoreCount()
 	{
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 	SYSTEM_INFO SI;
 	GetSystemInfo(&SI);
 	unsigned n = SI.dwNumberOfProcessors;
