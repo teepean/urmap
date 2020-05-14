@@ -155,7 +155,7 @@ const char *GetPlatform()
 	{
 #if	BITS==32
 	asserta(sizeof(void *) == 4);
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 	return "win32";
 #elif defined(__APPLE__)
 	return "i86osx32";
@@ -166,7 +166,7 @@ const char *GetPlatform()
 #endif
 #elif BITS==64
 	asserta(sizeof(void *) == 8);
-#ifdef _MSC_VER
+#if (defined(_MSC_VER) || defined(__MINGW32__))
 	return "win64";
 #elif defined(__APPLE__)
 	return "i86osx64";
